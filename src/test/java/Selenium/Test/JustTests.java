@@ -6,7 +6,9 @@ import Selenium.Steps.ResendPageSteps;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.assertTrue;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -22,7 +24,7 @@ public class JustTests {
     @Before
     public void inicialization() {
         driver = new FirefoxDriver();
-       driver.manage().window().maximize();
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 
@@ -30,9 +32,9 @@ public class JustTests {
 
 
     @Test
-    public void AllTests(){
+    public void AllTests() {
         mainPageSteps = new MainPageSteps(driver);
-        assertTrue( mainPageSteps.goToResendPage());
+        assertTrue(mainPageSteps.goToResendPage());
 
         resendPageSteps = new ResendPageSteps(driver);
         assertTrue(resendPageSteps.fillQaAndCheck());
@@ -41,8 +43,9 @@ public class JustTests {
         assertTrue(resendPageSteps.checkTwitterImageUrl());
         assertTrue(resendPageSteps.checkTwitterImageAdress());
     }
+
     @After
-    public void end(){
+    public void end() {
         driver.quit();
     }
 

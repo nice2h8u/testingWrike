@@ -1,0 +1,5 @@
+Selenium\Pages\ResendPage.class
+Selenium\Pages\MainPage.class
+Selenium\Test\JustTests.class
+Selenium\Steps\MainPageSteps.class
+Selenium\Steps\ResendPageSteps.class
