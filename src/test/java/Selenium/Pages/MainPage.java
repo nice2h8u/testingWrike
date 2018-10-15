@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -16,12 +18,16 @@ public class MainPage {
 
     private String surfToResendPageUrl;
 
+
     private WebDriver driver;
 
+    @FindBy(xpath = "/html/body/div[1]/header/div[3]/div[2]/div/div/div[2]/div/form/button")
     private WebElement getStartedButton;
 
+    @FindBy(xpath = "/html/body/div[4]/div/form/label[1]/input")
     private WebElement inputEmailForm;
 
+    @FindBy(xpath = "/html/body/div[4]/div/form/label[2]/button")
     private WebElement createWrikeAcountButton;
 
 
@@ -30,15 +36,13 @@ public class MainPage {
         this.driver = driver;
         mainPageUrl = "https://www.wrike.com/";
         surfToResendPageUrl = "https://www.wrike.com/resend/";
-        getStartedButton = driver.findElement(By.xpath("/html/body/div[1]/header/div[3]/div[2]/div/div/div[2]/div/form/button"));
-        inputEmailForm = driver.findElement(By.xpath("/html/body/div[4]/div/form/label[1]/input"));
-        createWrikeAcountButton = driver.findElement(By.xpath("/html/body/div[4]/div/form/label[2]/button"));
+        driver.get(mainPageUrl);
+
+        PageFactory.initElements(driver, this);
+
 
     }
 
-    public void goToMainPage(){
-        driver.get("https://www.wrike.com/resend/");
-    }
 
     public void pressGetStartedButton() {
         getStartedButton.click();

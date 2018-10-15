@@ -12,7 +12,7 @@ public class MainPageSteps {
     }
 
     public boolean goToResendPage() {
-        mainPage.goToMainPage();
+
         mainPage.pressGetStartedButton();
         mainPage.inputEmailFormText();
         mainPage.pressCreateWrikeAcountButton();

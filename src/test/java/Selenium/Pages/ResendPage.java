@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -19,17 +22,22 @@ public class ResendPage {
     private String twitterImageUrl;
 
     private String twitterImageAdress;
-
+    @FindBy (xpath = "/html/body/c-wiz/div/div/div[2]/div[4]/span[1]/div")
     private WebElement noButtonInFrame;
 
+    @FindBy(css = ".switch__button")
     List<WebElement> buttonsFromAnswerArea;
 
+    @FindBy(xpath = "/html/body/div[1]/main/div/div/div[2]/div/div[2]/div/form/button")
     private WebElement submitAnswersButton;
 
+    @FindBy(xpath = "/html/body/div[1]/main/div/div/div[2]/div/div[1]/p[3]/button")
     private WebElement sendEmailVerificationButton;
+
 
     private WebElement twitterButton;
 
+    @FindBy(xpath = "/html/body/div[1]/main/div/div/div[2]/div/div[2]/div/form/div[3]/label[3]/button/span/input")
     private WebElement hidenInputArea;
 
 
@@ -38,22 +46,16 @@ public class ResendPage {
 
         this.driver = driver;
         resendPageUrl = "https://www.wrike.com/resend/";
+        twitterImageAdress="/content/themes/wrike/dist/img/sprite/vector/footer-icons.symbol.svg?v1#twitter";
         twitterImageUrl = "https://twitter.com/wrike";
-        twitterImageAdress = "/content/themes/wrike/dist/img/sprite/vector/footer-icons.symbol.svg?v1#twitter";
-        noButtonInFrame = driver.findElement(By.xpath("/html/body/c-wiz/div/div/div[2]/div[4]/span[1]/div"));
-        buttonsFromAnswerArea = driver.findElements(By.cssSelector(".switch__button"));
-        submitAnswersButton = driver.findElement(By.xpath("/html/body/div[1]/main/div/div/div[2]/div/div[2]/div/form/button"));
-        sendEmailVerificationButton = driver.findElement(By.xpath("/html/body/div[1]/main/div/div/div[2]/div/div[1]/p[3]/button"));
-        hidenInputArea = driver.findElement(By.xpath("/html/body/div[1]/main/div/div/div[2]/div/div[2]/div/form/div[3]/label[3]/button/span/input"));
+        PageFactory.initElements(driver, this);
         twitterButton = driver.findElement(By.cssSelector
                 (".wg-footer__group.wg-footer__group--social")).findElements(By.cssSelector(".wg-footer__social-link")).get(0);
-    }
 
-    public void goToResendPage() {
-
-        driver.get("https://www.wrike.com/resend/");
 
     }
+
+
 
     public void closeFrame() {
         //wait until the frame become visible
@@ -68,6 +70,13 @@ public class ResendPage {
         noButtonInFrame.click();
         //return to the main page
         driver.switchTo().defaultContent();
+
+        //inicialize twitter button
+
+    }
+
+    public void inicialize(){
+
     }
 
     public void randomButtonsForAnswersArea() {
@@ -103,6 +112,7 @@ public class ResendPage {
     }
 
     public boolean isTwitterButtonExists() {
+
         return twitterButton.isDisplayed();
     }
     public  boolean isTwitterImageUrlRight(){
@@ -110,6 +120,8 @@ public class ResendPage {
     }
     public boolean isTwitterImageAdressRight()
     {
+
+
         return twitterButton.findElement(By.tagName("use")).getAttribute("xlink:href").contains(twitterImageAdress);
     }
 

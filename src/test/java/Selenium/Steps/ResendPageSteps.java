@@ -11,7 +11,7 @@ public class ResendPageSteps {
     }
 
     public boolean fillQaAndCheck(){
-        resendPage.goToResendPage();
+
         resendPage.closeFrame();
         resendPage.randomButtonsForAnswersArea();
         resendPage.submitResults();
@@ -23,8 +23,17 @@ public class ResendPageSteps {
         return resendPage.isSendEmailVerification();
     }
 
-    public boolean checkTwitterImage(){
+    public boolean checkTwitterButtonExists(){
 
-        return (resendPage.isTwitterButtonExists() && resendPage.isTwitterImageUrlRight() && resendPage.isTwitterImageAdressRight());
+        return resendPage.isTwitterButtonExists();
+    }
+
+    public boolean checkTwitterImageAdress(){
+        return resendPage.isTwitterImageAdressRight();
+    }
+
+    public boolean checkTwitterImageUrl(){
+
+        return  resendPage.isTwitterImageUrlRight();
     }
 }
