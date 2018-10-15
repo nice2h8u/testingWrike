@@ -1,5 +1,6 @@
 package Selenium.Pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -47,7 +48,7 @@ public class MainPage {
     public void pressGetStartedButton() {
         getStartedButton.click();
     }
-
+    @Step
     public void inputEmailFormText() {
 
         String email = "";
@@ -58,11 +59,11 @@ public class MainPage {
 
         inputEmailForm.sendKeys(email);
     }
-
+    @Step
     public void pressCreateWrikeAcountButton() {
         createWrikeAcountButton.click();
     }
-
+    @Step
     public boolean isItResendPage() {
 
         new WebDriverWait(driver, 10).until(ExpectedConditions.titleIs("Thank you for choosing Wrike!"));

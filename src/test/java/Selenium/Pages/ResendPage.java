@@ -1,5 +1,6 @@
 package Selenium.Pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -56,7 +57,7 @@ public class ResendPage {
     }
 
 
-
+    @Step
     public void closeFrame() {
         //wait until the frame become visible
         try {
@@ -75,10 +76,8 @@ public class ResendPage {
 
     }
 
-    public void inicialize(){
 
-    }
-
+    @Step
     public void randomButtonsForAnswersArea() {
 
         int firstArea = (int) (Math.random() * 1);
@@ -91,33 +90,35 @@ public class ResendPage {
             hidenInputArea.sendKeys("blabla");
 
     }
-
+    @Step
     public void submitResults() {
         submitAnswersButton.submit();
     }
-
+    @Step
     public boolean isSubmittedResults() {
 
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(submitAnswersButton));
         return (submitAnswersButton.isDisplayed());
     }
-
+    @Step
     public void sendEmailVerification() {
         sendEmailVerificationButton.click();
     }
-
+    @Step
     public boolean isSendEmailVerification() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(sendEmailVerificationButton));
         return (sendEmailVerificationButton.isDisplayed());
     }
-
+    @Step
     public boolean isTwitterButtonExists() {
 
         return twitterButton.isDisplayed();
     }
+    @Step
     public  boolean isTwitterImageUrlRight(){
         return twitterButton.getAttribute("href").contains(twitterImageUrl);
     }
+    @Step
     public boolean isTwitterImageAdressRight()
     {
 
